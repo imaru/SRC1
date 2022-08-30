@@ -3,6 +3,9 @@ var repo_site = "https://imaru.github.io/SRC1/";
  /* create timeline */
  var tlprac = [];
 
+ var swid = document.documentElement.clientWidth;
+ var shgt = document.documentElement.clientHeight;
+
  /* preload images */
  var preload = {
    type: 'preload',
@@ -47,16 +50,21 @@ tlprac.push(practice);
  /* test trials */
 function drawBlueL(c){
     var ctx = c.getContext('2d');
+    
     const chara = new Image();
     chara.src= repo_site+'img/blue.png';
-    ctx.drawImage(chara, 0, 0);
+    var iwid = chara.width;
+    var ihgt = chara.height;
+    ctx.drawImage(chara, iwid*1.5, -ihgt/2);
 }
 
 function drawOrangeR(c){
     var ctx = c.getContext('2d');
     const chara = new Image();
     chara.src= repo_site+'img/orange.png';
-    ctx.drawImage(chara, 250, 0);
+    var iwid = chara.width;
+    var ihgt = chara.height;
+    ctx.drawImage(chara, iwid/2, -ihgt/2);
 }
 
  var test_stimuli = [
@@ -78,7 +86,7 @@ function drawOrangeR(c){
 
  var test = {
    type: "canvas-keyboard-response",
-   canvas_size: [500, 500],
+   canvas_size: [swid, shgt],
    stimulus: jsPsych.timelineVariable('stimulus'),
    choices: ['f', 'j'],
    data: {
