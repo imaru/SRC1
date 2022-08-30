@@ -1,21 +1,21 @@
 var repo_site = "https://imaru.github.io/SRC1/";
  
  /* create timeline */
- var timeline = [];
+ var tlprac = [];
 
  /* preload images */
  var preload = {
    type: 'preload',
    images: [repo_site+'img/blue.png', repo_site+'img/orange.png']
  }
- timeline.push(preload);
+ tlprac.push(preload);
 
  /* define welcome message trial */
  var welcome = {
    type: "html-keyboard-response",
    stimulus: "Welcome to the experiment. Press any key to begin."
  };
- timeline.push(welcome);
+ tlprac.push(welcome);
 
  /* define instructions trial */
 var practice = {
@@ -26,7 +26,7 @@ var practice = {
     "<p>何かキーを押して進んでください</p>",
   post_trial_gap: 2000
 };
-timeline.push(practice);
+tlprac.push(practice);
 
  var instructions = {
    type: "html-keyboard-response",
@@ -42,7 +42,7 @@ timeline.push(practice);
      " <p>何かキーを押すと練習が始まります。</p> ",
    post_trial_gap: 2000
  };
- timeline.push(instructions);
+ tlprac.push(instructions);
 
  /* test trials */
  var test_stimuli = [
@@ -81,7 +81,7 @@ timeline.push(practice);
    repetitions: 5,
    randomize_order: true
  }
- timeline.push(test_procedure);
+ tlprac.push(test_procedure);
 
  /* define debrief */
 
@@ -100,4 +100,4 @@ timeline.push(practice);
 
    }
  };
- timeline.push(debrief_block);
+ tlprac.push(debrief_block);

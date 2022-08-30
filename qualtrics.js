@@ -35,7 +35,7 @@ Qualtrics.SurveyEngine.addOnload(function()
      jQuery("<div id = 'display_stage'></div>").appendTo('body');
      function initExp() {
         jsPsych.init({
-            timeline: timeline,
+            timeline: tlprac,
             display_element: 'display_stage',
             on_finish: function (data) {
        
