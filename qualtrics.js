@@ -4,7 +4,7 @@ Qualtrics.SurveyEngine.addOnload(function()
      var qthis = this;
      qthis.hideNextButton();
  
-     var task_github = "https://imaru.github.io/jqTemplate/"; 
+     var task_github = "https://imaru.github.io/SRC1/"; 
      // https://<GitHubのユーザー名>.github.io/<レポジトリ名>/
  
      var requiredResources = [

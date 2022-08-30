@@ -1,4 +1,4 @@
-var repo_site = "https://imaru.github.io/jqTemplate/";
+var repo_site = "https://imaru.github.io/SRC1/";
  
  /* create timeline */
  var timeline = [];
