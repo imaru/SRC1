@@ -45,9 +45,23 @@ tlprac.push(practice);
  tlprac.push(instructions);
 
  /* test trials */
+function drawBlueL(c){
+    var ctx = c.getContext('2d');
+    const chara = new Image();
+    chara.src= repo_site+'img/blue.png';
+    ctx.drawImage(chara, 0, 0);
+}
+
+function drawPrangeR(c){
+    var ctx = c.getContext('2d');
+    const chara = new Image();
+    chara.src= repo_site+'img/orange.png';
+    ctx.drawImage(chara, 250, 0);
+}
+
  var test_stimuli = [
-   { stimulus: "<div style=text-align: left; "+repo_site+"img/blue.png</div>",  correct_response: 'f'},
-   { stimulus: repo_site+"img/orange.png",  correct_response: 'j'}
+   { stimulus: drawBlueL,  correct_response: 'f'},
+   { stimulus: drawOrangeR,  correct_response: 'j'}
  ];
 
  var fixation = {
@@ -63,7 +77,8 @@ tlprac.push(practice);
  }
 
  var test = {
-   type: "image-keyboard-response",
+   type: "canvas-keyboard-response",
+   canvas_size: [500, 500],
    stimulus: jsPsych.timelineVariable('stimulus'),
    choices: ['f', 'j'],
    data: {
