@@ -52,7 +52,7 @@ function drawBlueL(c){
     ctx.drawImage(chara, 0, 0);
 }
 
-function drawPrangeR(c){
+function drawOrangeR(c){
     var ctx = c.getContext('2d');
     const chara = new Image();
     chara.src= repo_site+'img/orange.png';
