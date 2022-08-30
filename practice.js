@@ -64,7 +64,7 @@ function drawOrangeR(c){
     chara.src= repo_site+'img/orange.png';
     var iwid = chara.width;
     var ihgt = chara.height;
-    ctx.drawImage(chara, swid/2+iwid/2, whgt/2-ihgt/2);
+    ctx.drawImage(chara, swid/2+iwid/2, shgt/2-ihgt/2);
 }
 
  var test_stimuli = [
