@@ -55,7 +55,7 @@ function drawBlueL(c){
     chara.src= repo_site+'img/blue.png';
     var iwid = chara.width;
     var ihgt = chara.height;
-    ctx.drawImage(chara, iwid*1.5, -ihgt/2);
+    ctx.drawImage(chara, swid/2-iwid*1.5, shgt/2-ihgt/2);
 }
 
 function drawOrangeR(c){
@@ -64,7 +64,7 @@ function drawOrangeR(c){
     chara.src= repo_site+'img/orange.png';
     var iwid = chara.width;
     var ihgt = chara.height;
-    ctx.drawImage(chara, iwid/2, -ihgt/2);
+    ctx.drawImage(chara, swid/2+iwid/2, whgt/2-ihgt/2);
 }
 
  var test_stimuli = [
