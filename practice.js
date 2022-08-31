@@ -11,7 +11,7 @@ var repo_site = "https://imaru.github.io/SRC1/";
  /* preload images */
  var preload = {
    type: 'preload',
-   images: ['img/blue.png', 'img/orange.png']
+   images: [repo_site+'img/blue.png', repo_site+'img/orange.png']
  }
  tlprac.push(preload);
 
@@ -39,9 +39,9 @@ tlprac.push(practice);
      " <p>円が<strong>青</strong>のときは Fキー で、円が<strong>オレンジ</strong>のときは Jキー で、"+
      " できるだけ早く反応してください。</p> " +
      " <div style='width: 700px;'>" +
-     " <div style='float: left;'><img src='img/blue.png'></img>" +
+     " <div style='float: left;'><img src='"+repo_site+"img/blue.png'></img>" +
      " <p class='small'><strong>Fキー</strong></p></div>" + 
-     " <div style='float: right;'><img src='img/orange.png'></img> " +
+     " <div style='float: right;'><img src="+repo_site+"'img/orange.png'></img> " +
      " <p class='small'><strong>Jキー</strong></p></div>" +
      "</div>" +
      " <div>何かキーを押すと練習が始まります。</div> ",
@@ -53,7 +53,7 @@ tlprac.push(practice);
 function drawBlueL(c){
     var ctx = c.getContext('2d');
     const chara = new Image();
-    chara.src= 'img/blue.png';
+    chara.src= repo_site+'img/blue.png';
     var iwid = chara.width;
     var ihgt = chara.height;
     ctx.drawImage(chara, swid/2-iwid*1.5, shgt/2-ihgt/2);
@@ -62,7 +62,7 @@ function drawBlueL(c){
 function drawBlueR(c){
     var ctx = c.getContext('2d');
     const chara = new Image();
-    chara.src= 'img/blue.png';
+    chara.src= repo_site+'img/blue.png';
     var iwid = chara.width;
     var ihgt = chara.height;
     ctx.drawImage(chara, swid/2+iwid*.5, shgt/2-ihgt/2);
@@ -71,7 +71,7 @@ function drawBlueR(c){
 function drawOrangeL(c){
     var ctx = c.getContext('2d');
     const chara = new Image();
-    chara.src= 'img/orange.png';
+    chara.src= repo_site+'img/orange.png';
     var iwid = chara.width;
     var ihgt = chara.height;
     ctx.drawImage(chara, swid/2-iwid*1.5, shgt/2-ihgt/2);
@@ -80,7 +80,7 @@ function drawOrangeL(c){
 function drawOrangeR(c){
     var ctx = c.getContext('2d');
     const chara = new Image();
-    chara.src= 'img/orange.png';
+    chara.src= repo_site+'img/orange.png';
     var iwid = chara.width;
     var ihgt = chara.height;
     ctx.drawImage(chara, swid/2+iwid/2, shgt/2-ihgt/2);
