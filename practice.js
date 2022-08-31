@@ -41,7 +41,7 @@ tlprac.push(practice);
      " <div style='width: 700px;'>" +
      " <div style='float: left;'><img src='"+repo_site+"img/blue.png'></img>" +
      " <p class='small'><strong>Fキー</strong></p></div>" + 
-     " <div style='float: right;'><img src="+repo_site+"'img/orange.png'></img> " +
+     " <div style='float: right;'><img src='"+repo_site+"img/orange.png'></img>" +
      " <p class='small'><strong>Jキー</strong></p></div>" +
      "</div>" +
      " <div>何かキーを押すと練習が始まります。</div> ",
