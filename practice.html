@@ -1,7 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My experiment</title>
+    <script src="jspsych-6.3.1/jspsych.js"></script>
+    <script src="jspsych-6.3.1/plugins/jspsych-html-keyboard-response.js"></script>
+    <script src="jspsych-6.3.1/plugins/jspsych-canvas-keyboard-response.js"></script>
+    <script src="jspsych-6.3.1/plugins/jspsych-preload.js"></script>
+    <link href="jspsych-6.3.1/css/jspsych.css" rel="stylesheet" type="text/css">
+  </head>
+  <body></body>
+  <script>
 var repo_site = "https://imaru.github.io/SRC1/";
  
  /* create timeline */
- var timeline = [];
+ var tlprac = [];
 
  var swid = document.documentElement.clientWidth*0.8;
  var shgt = document.documentElement.clientHeight*0.8;
@@ -13,14 +25,14 @@ var repo_site = "https://imaru.github.io/SRC1/";
    type: 'preload',
    images: ['img/blue.png', 'img/orange.png']
  }
- timeline.push(preload);
+ tlprac.push(preload);
 
  /* define welcome message trial */
  var welcome = {
    type: "html-keyboard-response",
    stimulus: "何かキーを押すと次に進みます"
  };
- timeline.push(welcome);
+ tlprac.push(welcome);
 
  /* define instructions trial */
 var practice = {
@@ -31,7 +43,7 @@ var practice = {
     "<p>何かキーを押して進んでください</p>",
   post_trial_gap: 100
 };
-timeline.push(practice);
+tlprac.push(practice);
 
  var instructions = {
    type: "html-keyboard-response",
@@ -47,7 +59,7 @@ timeline.push(practice);
      " <div>何かキーを押すと練習が始まります。</div> ",
    post_trial_gap: 100
  };
- timeline.push(instructions);
+ tlprac.push(instructions);
 
  /* test trials */
 function drawBlueL(c){
@@ -122,10 +134,10 @@ function drawOrangeR(c){
  var test_procedure = {
    timeline: [fixation, test],
    timeline_variables: test_stimuli,
-   repetitions: 5,
+   repetitions: 1,
    randomize_order: true
  }
- timeline.push(test_procedure);
+ tlprac.push(test_procedure);
 
  /* define debrief */
 
@@ -144,4 +156,16 @@ function drawOrangeR(c){
 
    }
  };
- timeline.push(debrief_block);
+ tlprac.push(debrief_block);
+  
+
+    /* start the experiment */
+    jsPsych.init({
+      timeline: tlprac,
+      on_finish: function() {
+        jsPsych.data.displayData();
+      }
+    });
+
+    </script>
+</html>

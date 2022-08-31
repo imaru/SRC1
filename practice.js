@@ -3,20 +3,22 @@ var repo_site = "https://imaru.github.io/SRC1/";
  /* create timeline */
  var tlprac = [];
 
- var swid = document.documentElement.clientWidth;
- var shgt = document.documentElement.clientHeight;
+ var swid = document.documentElement.clientWidth*0.8;
+ var shgt = document.documentElement.clientHeight*0.8;
+ console.log(shgt);
+ console.log(swid);
 
  /* preload images */
  var preload = {
    type: 'preload',
-   images: [repo_site+'img/blue.png', repo_site+'img/orange.png']
+   images: ['img/blue.png', 'img/orange.png']
  }
  tlprac.push(preload);
 
  /* define welcome message trial */
  var welcome = {
    type: "html-keyboard-response",
-   stimulus: "Welcome to the experiment. Press any key to begin."
+   stimulus: "何かキーを押すと次に進みます"
  };
  tlprac.push(welcome);
 
@@ -27,32 +29,49 @@ var practice = {
     "<p>練習は4試行実施されます</p>"+
     "<p>次のページでは実験の説明が表示されます</p>"+
     "<p>何かキーを押して進んでください</p>",
-  post_trial_gap: 2000
+  post_trial_gap: 100
 };
 tlprac.push(practice);
 
  var instructions = {
    type: "html-keyboard-response",
-   stimulus: "<p>実験では色のついた円が画面の左右どちらかに呈示されます。" +
-     " 円が<strong>青</strong>のときは Fキー で、円が<strong>オレンジ</strong>のときは" +
-     " Jキー で、できるだけ早く反応してください。</p> " +
+   stimulus: "<p>実験では色のついた円が画面の左右どちらかに呈示されます。</p>" +
+     " <p>円が<strong>青</strong>のときは Fキー で、円が<strong>オレンジ</strong>のときは Jキー で、"+
+     " できるだけ早く反応してください。</p> " +
      " <div style='width: 700px;'>" +
-     " <div style='float: left;'><img src=" + repo_site + "'img/blue.png'></img>" +
+     " <div style='float: left;'><img src='img/blue.png'></img>" +
      " <p class='small'><strong>Fキー</strong></p></div>" + 
-     " <div style='float: right;'><img src=" + repo_site + "'img/orange.png'></img> " +
+     " <div style='float: right;'><img src='img/orange.png'></img> " +
      " <p class='small'><strong>Jキー</strong></p></div>" +
      "</div>" +
-     " <p>何かキーを押すと練習が始まります。</p> ",
-   post_trial_gap: 2000
+     " <div>何かキーを押すと練習が始まります。</div> ",
+   post_trial_gap: 100
  };
  tlprac.push(instructions);
 
  /* test trials */
 function drawBlueL(c){
     var ctx = c.getContext('2d');
-    
     const chara = new Image();
-    chara.src= repo_site+'img/blue.png';
+    chara.src= 'img/blue.png';
+    var iwid = chara.width;
+    var ihgt = chara.height;
+    ctx.drawImage(chara, swid/2-iwid*1.5, shgt/2-ihgt/2);
+}
+
+function drawBlueR(c){
+    var ctx = c.getContext('2d');
+    const chara = new Image();
+    chara.src= 'img/blue.png';
+    var iwid = chara.width;
+    var ihgt = chara.height;
+    ctx.drawImage(chara, swid/2+iwid*.5, shgt/2-ihgt/2);
+}
+
+function drawOrangeL(c){
+    var ctx = c.getContext('2d');
+    const chara = new Image();
+    chara.src= 'img/orange.png';
     var iwid = chara.width;
     var ihgt = chara.height;
     ctx.drawImage(chara, swid/2-iwid*1.5, shgt/2-ihgt/2);
@@ -61,7 +80,7 @@ function drawBlueL(c){
 function drawOrangeR(c){
     var ctx = c.getContext('2d');
     const chara = new Image();
-    chara.src= repo_site+'img/orange.png';
+    chara.src= 'img/orange.png';
     var iwid = chara.width;
     var ihgt = chara.height;
     ctx.drawImage(chara, swid/2+iwid/2, shgt/2-ihgt/2);
@@ -69,6 +88,8 @@ function drawOrangeR(c){
 
  var test_stimuli = [
    { stimulus: drawBlueL,  correct_response: 'f'},
+   { stimulus: drawOrangeL,  correct_response: 'j'},
+   { stimulus: drawBlueR,  correct_response: 'f'},
    { stimulus: drawOrangeR,  correct_response: 'j'}
  ];
 
@@ -86,7 +107,7 @@ function drawOrangeR(c){
 
  var test = {
    type: "canvas-keyboard-response",
-   canvas_size: [swid, shgt],
+   canvas_size: [shgt, swid],
    stimulus: jsPsych.timelineVariable('stimulus'),
    choices: ['f', 'j'],
    data: {
@@ -101,7 +122,7 @@ function drawOrangeR(c){
  var test_procedure = {
    timeline: [fixation, test],
    timeline_variables: test_stimuli,
-   repetitions: 5,
+   repetitions: 1,
    randomize_order: true
  }
  tlprac.push(test_procedure);
@@ -117,9 +138,9 @@ function drawOrangeR(c){
      var accuracy = Math.round(correct_trials.count() / trials.count() * 100);
      var rt = Math.round(correct_trials.select('rt').mean());
 
-     return `<p>You responded correctly on ${accuracy}% of the trials.</p>
-       <p>Your average response time was ${rt}ms.</p>
-       <p>Press any key to complete the experiment. Thank you!</p>`;
+     return `<p>正答率 ${accuracy}% </p>
+       <p>平均正反応時間 ${rt}ms</p>
+       <p>ご協力ありがとうございました。何かキーを押すと実験が終了します。</p>`;
 
    }
  };
